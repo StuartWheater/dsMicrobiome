@@ -1,0 +1,33 @@
+# Deployment dsMicrobiome
+
+## Using opalr::dsadmin.install_login_package to deploy DataSHIELD's dsMicrobiome packages
+
+### Requirements
+- Opal  4.0.2 (server - service)
+- opalr 2.0.0 (client - R Package)
+- vegan 2.5-7 (server - R Package)
+
+### Load packages
+```{r}
+library(devtools)
+library(opalr)
+```
+### Build new version of dsBase
+```{r}
+buildfile_location <- devtools::build()
+print(buildfile_location)
+```
+### Log into Opal
+Note this uses opalr's login not DSI's login
+```{r}
+opal <- opalr::opal.login('administrator', 'datashield_test&', url = 'http://192.168.56.100:8080/')
+print(opal)
+```
+### Deploy new dsBase package
+```{r}
+opalr::dsadmin.install_local_package(opal, buildfile_location)
+```
+### Log out of Opal
+```{r}
+opalr::opal.logout(opal)
+```

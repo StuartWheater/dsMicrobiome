@@ -1,0 +1,9 @@
+## Ignore travis config file
+^.*\.Rproj$
+^\.Rproj\.user$
+^README.txt$
+^LICENSE.md$
+^azure-pipelines\.yml$
+^azure-pipelines_site\.pp$
+^files$
+^deploy.Rmd$

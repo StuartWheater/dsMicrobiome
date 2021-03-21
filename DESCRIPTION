@@ -1,0 +1,22 @@
+Package: dsMicrobiome
+Title: DataSHIELD Microbiome Server Functions Prototype
+Version: 0.0.0-05
+Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
+Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
+License: GPL-3
+Description: DataSHIELD Microbiome Server Functions Prototype for the server side.
+Depends: R (>= 3.5.0)
+Imports:
+    vegan
+AggregateMethods:
+    adonisDS,
+    capscaleDS,
+    diversityDS,
+    vegdistDS
+AssignMethods:
+    adonis_assignDS,
+    capscale_assignDS,
+    diversity_assignDS,
+    vegdist_assignDS
+RoxygenNote: 7.1.1
+Encoding: UTF-8
