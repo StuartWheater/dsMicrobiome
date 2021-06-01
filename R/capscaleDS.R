@@ -18,13 +18,16 @@
 #'
 
 # capscaleDS <- function(formula, data.name.transmit, distance = "euclidean", sqrt.dist = FALSE, comm = NULL, add = FALSE, dfun = vegan::vegdist, metaMDSdist = FALSE, na.action = stats::na.fail, subset = NULL)
-capscaleDS <- function(formula, data.name.transmit, distance = "euclidean", sqrt.dist = FALSE, comm = NULL, add = FALSE, metaMDSdist = FALSE, subset = NULL)
+capscaleDS <- function(formula, data.name.transmit, distance = "euclidean", sqrt.dist = FALSE, comm = NULL, add = FALSE, metaMDSdist = FALSE, na.action = stats::na.omit, subset = NULL)
 {
-    print('#1')
     data <- eval(parse(text=data.name.transmit), envir = parent.frame())
-    print('#2')
-    capscaleResults <- vegan::capscale(formula, data, distance, sqrt.dist, comm, add, metaMDSdist = metaMDSdist, subset = subset)
-    print('#3')
+    data[is.na(data)] <- 0
+
+    environment(formula) <- environment()
+
+#    capscaleResults <- vegan::capscale(formula, data, distance, sqrt.dist, comm, add, metaMDSdist = metaMDSdist, subset = subset)
+    capscaleResults <- tryCatch(capscaleResults <- vegan::capscale(formula, data, dfun = vegan::vegdist, na.action = stats::na.omit), error = function(e) { print('####'); print(e); traceback(); print('####'); return(NULL); })
+
     return(capscaleResults)
 }
 #ASSIGN FUNCTION

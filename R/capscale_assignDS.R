@@ -26,5 +26,5 @@ capscale_assignDS <- function(formula, data.name.transmit, distance = "euclidean
 
     return(capscaleResults)
 }
-#AGGREGATE FUNCTION
+#ASSIGN FUNCTION
 # capscale_assignDS
