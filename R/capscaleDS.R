@@ -8,25 +8,23 @@
 #' @param sqrt.dist an parameter of unspecified purpose
 #' @param comm an parameter of unspecified purpose
 #' @param add an parameter of unspecified purpose
-# @param dfun an parameter of unspecified purpose
+#' @param dfun an parameter of unspecified purpose
 #' @param metaMDSdist an parameter of unspecified purpose
-# @param na.action an parameter of unspecified purpose
+#' @param na.action an parameter of unspecified purpose
 #' @param subset an parameter of unspecified purpose
 #' @return the results of \code{capscaleDS} function
 #' @author Stuart Wheater for DataSHIELD Development Team
 #' @export
 #'
 
-# capscaleDS <- function(formula, data.name.transmit, distance = "euclidean", sqrt.dist = FALSE, comm = NULL, add = FALSE, dfun = vegan::vegdist, metaMDSdist = FALSE, na.action = stats::na.fail, subset = NULL)
-capscaleDS <- function(formula, data.name.transmit, distance = "euclidean", sqrt.dist = FALSE, comm = NULL, add = FALSE, metaMDSdist = FALSE, na.action = stats::na.omit, subset = NULL)
+capscaleDS <- function(formula, data.name.transmit, distance = "euclidean", sqrt.dist = FALSE, comm = NULL, add = FALSE, dfun = vegan::vegdist, metaMDSdist = FALSE, na.action = stats::na.fail, subset = NULL)
 {
     data <- eval(parse(text=data.name.transmit), envir = parent.frame())
-    data[is.na(data)] <- 0
 
     environment(formula) <- environment()
 
-#    capscaleResults <- vegan::capscale(formula, data, distance, sqrt.dist, comm, add, metaMDSdist = metaMDSdist, subset = subset)
-    capscaleResults <- tryCatch(capscaleResults <- vegan::capscale(formula, data, dfun = vegan::vegdist, na.action = stats::na.omit), error = function(e) { print('####'); print(e); traceback(); print('####'); return(NULL); })
+    capscaleResults <- vegan::capscale(formula, data, distance, sqrt.dist, comm, add, metaMDSdist = metaMDSdist, subset = subset)
+#    capscaleResults <- vegan::capscale(formula, data, dfun = vegan::vegdist, na.action = stats::na.omit)
 
     return(capscaleResults)
 }

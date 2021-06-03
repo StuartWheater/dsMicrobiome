@@ -3,7 +3,9 @@
 ^\.Rproj\.user$
 ^README.txt$
 ^LICENSE.md$
+^LICENSE$
 ^azure-pipelines\.yml$
 ^azure-pipelines_site\.pp$
 ^files$
+^deploy.R$
 ^deploy.Rmd$

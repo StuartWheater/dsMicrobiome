@@ -17,6 +17,8 @@ adonis_assignDS <- function(formula, data.name.transmit, permutations = 999, met
 {
     data <- eval(parse(text=data.name.transmit), envir = parent.frame())
 
+    environment(formula) <- environment()
+
     adonisResults <- vegan::adonis(formula, data, permutations, method, strata, contr.unordered, contr.ordered)
 
     return(adonisResults)

@@ -22,6 +22,8 @@ capscale_assignDS <- function(formula, data.name.transmit, distance = "euclidean
 {
     data <- eval(parse(text=data.name.transmit), envir = parent.frame())
 
+    environment(formula) <- environment()
+
     capscaleResults <- vegan::capscale(formula, data, distance, sqrt.dist, comm, add, metaMDSdist = metaMDSdist, subset = subset)
 
     return(capscaleResults)

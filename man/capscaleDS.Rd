@@ -11,7 +11,9 @@ capscaleDS(
   sqrt.dist = FALSE,
   comm = NULL,
   add = FALSE,
+  dfun = vegan::vegdist,
   metaMDSdist = FALSE,
+  na.action = stats::na.fail,
   subset = NULL
 )
 }
@@ -28,7 +30,11 @@ capscaleDS(
 
 \item{add}{an parameter of unspecified purpose}
 
+\item{dfun}{an parameter of unspecified purpose}
+
 \item{metaMDSdist}{an parameter of unspecified purpose}
+
+\item{na.action}{an parameter of unspecified purpose}
 
 \item{subset}{an parameter of unspecified purpose}
 }
